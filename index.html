@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+	<title>Linux Commands</title>
+	<style>
+		html body {
+			width:100%;
+			background-color:#111;
+			font-family:Courier;}
+		h1 {	
+			color:#00AA00;
+			margin-left:20%;
+			font-size:30px;}
+		table {
+			width:80%;
+			margin:20px 10% 50px 10%;
+			border:none;
+			color:#999;
+			font-size:15px;}
+		tr {
+			width:auto;}
+		th {
+			border:1px solid #999;
+			padding:4px 1% 4px 1%;
+			color:white;
+			text-align:left;
+			font-size:15px;}
+		td {
+			border:1px solid #999;
+			padding:4px 1% 4px 1%;
+			text-align:left;
+			font-size:15px;}
+	</style>
+</head>
+<body>
+	<h1>Linux commands</h1>
+	<table>
+		<tr><th>Standard commands</th><th>Description</th></tr>
+		<tr><td>pwd</td><td>Print working directory</td></tr>
+		<tr><td>whoami</td><td>Display username of currently logged user</td></tr>
+		<tr><td>clear</td><td>Clear terminal window</td></tr>
+		<tr><td>history</td><td>Show command history</td></tr>
+		<tr><td>exit</td><td>Exits terminal</td></tr>
+		<tr><td>echo</td><td>Display string into terminal windows</td></tr>
+		<tr><td>man COMMAND, COMMAND --help</td><td>display manual or help for command</td></tr>
+	</table>
+
+	<table>
+		<tr><th>Directory and file commands</th><th>Attributes</th><th>Description</th></tr>
+		<tr><td>cd ../BACK_FOLDER, cd FORWARD_FOLDER, cd /ABSOLUTE_PATH</td><td>---</td><td>Change directory</td></tr>
+		<tr><td>mkdir FOLDER_NAME</td><td>mkdir -p PATH/FOLDER_NAME</td><td>Create new folder where specified</td></tr>
+		<tr><td>rmdir FOLDER_NAME_TO_DEL</td><td>rmdir -p FOLDER_PARENT_TO_DEL/FOLDER_NAME_TO_DEL</td><td>Removes empty folder or parent of folder</td></tr>
+		<tr><td>ls</td><td>ls -l, ls -h, ls -a, ls -t, ls -r</td><td>Show list of files in the current directory, where -l is advanced list, -h is human readable size format, -a shows all entries, -t sort files by date and -r shows list in reverse order</td></tr>
+		<tr><td>tree</td><td>tree -d</td><td>Show tree of child directories and files, or with -d only child directories, <i>tree command needs to be installed by: yum install tree</i></td></tr>
+		<tr><td>cp SOURCE DESTINATION</td><td>cp -r SOURCE_NON_EMTY_DIRECTORY DESTINATION</td><td>Copy source files and folders into destination path</td></tr>
+		<tr><td>mv SOURCE DESTINATION</td><td>---</td><td>Move or rename source file to destination path</td></tr>
+		<tr><td>rm FILENAME</td><td>rm -rf FILE_OR_NON_EMPTY_FOLDER</td><td>Remove file or folder, - means forced delete of every file and -r for recursive delete of each child and parent directories</td></tr>
+		<tr><td>touch FILE_NAME</td><td>touch -d YYYY-MM-DD FILE_NAME</td><td>Create new empty file or change timestamp of file with -d</td></tr>
+		<tr><td>tail FILENAME</td><td>tail -n5 FILENAME</td><td>Display last 10 rows of file specified, or custom nuber of rows with -n#</td></tr>
+		<tr><td>head FILENAME</td><td>head -n5 FILENAME</td><td>Display first 10 rows of file specified, or custom number of rows with -n#</td></tr>
+		<tr><td>ln TARGET /PATH/LINK_NAME</td><td>ln -s TARGET /LINK/NAME</td><td>Create hard link to target in defined path, or create a symbolic link with -s (similar to standard Widnows link type)</td></tr>
+	</table>
+
+	<table>
+		<tr><th>User commands</th><th>Attributes</th><th>Description</th></tr>
+		<tr><td>su</td><td>su - root, su root</td><td>Switch user and move into user home directory with -, or just switch user and stay in working directory without -</td></tr>	
+		<tr><td>sudo COMMAND</td><td>---</td><td>Run command as root, user needs to be in /etc/sudoers file (can be set with NOPASSWD: ALL command to not required password authentification</td></tr>
+		<tr><td>exit</td><td>---</td><td>Log out of current user</td></tr>
+		<tr><td>logout</td><td>---</td><td>Log out of current user in login shell</td></tr>
+		<tr><td>ssh USER_LOGIN@IP</td><td>---</td><td>SSH login to remote machine via username and IP</td></tr>	
+		<tr><td>useradd USER_LOGIN</td><td>useradd -c "COMMENT WITH SPACES" -d -e YYYY-MM-DD -g GROUP_ID_OR_NAME -m HOME_DIRECTORY_NAME -u USER_LOGIN</td><td>Create new user - saved at /etc/passwd</td></tr>
+		<tr><td>userdel USER_LOGIN</td><td>userdel -r USER_LOGIN</td><td>Delete defined user, with -r deltes also users home directory</td></tr>
+		<tr><td>usermod USER_LOGIN</td><td>usermod -c -d -e -g -m -u -s USER_LOGIN</td><td>Modifies user data for user_login, similar as in useradd command</td></tr>
+		<tr><td>passwd USER_LOGIN</td><td>---</td><td>Change password for specified user</td></tr>
+		<tr><td>groupadd GROUP_NAME</td><td>groupadd -g GROUP_ID GROUP_NAME</td><td>Add new group to system, with -g add also unique group ID</td></tr>
+		<tr><td>chown OWNER:GROUP FILENAME</td><td>---</td><td>Change owner and group of file</td></tr>
+		<tr><td>chgrp GROUP FILENAME</td><td>---</td><td>Change group of file</td></tr>
+		<tr><td>alias NAME="VALUE"</td><td>---</td><td>Create alias for command</td></tr>
+		<tr><td>id USER_LOGIN</td><td>---</td><td>Shows id of specified or currently logged user</td></tr>
+	</table>	
+	<table>
+		<tr><th>Text commands</th><th>Attributes</th><th>Description</th></tr>
+		<tr><td>vim FILENAME</td><td>---</td><td>Create or open file in vim text editor, commands in vim editor: i = insert mode, Esc = close insert mode, :!wq or ZZ = save and quit, :q! = quit without saving, dd = remove a line, yy = copies a line, p = paste line, u = undo, x = removes a character</td></tr>
+		<tr><td>cat FILENAME</td><td>cat -n FILENAME</td><td>Shows file content in terminal window, with -n shows also line number</td></tr>
+		<tr><td>less FILENAME</td><td>---</td><td>Shows file content in terminal window in interactive format, able to search</td></tr>
+		<tr><td>cut FILENAME</td><td>cut -f NUMBER_OF_CELL -d DELIMITER_OF_CELLS FILENAME</td><td>Shows content in terminal window, with -f shows specified cell, with -d change delimiter</td></tr>
+		<tr><td>vi, joe, emacs, nanoDe...</td><td>---</td><td>Another text editors</td></tr>
+		<tr><td>wc FILENAME</td><td>wc -l</td><td>Count words in file, or count lines with -l</td></tr>
+	</table>
+	<table>
+		<tr><th>Other system commands</th><th>Attributes</th><th>Description</th></tr>
+		<tr><td>ps</td><td>ps -ef</td><td>Shows processes, -e for all processes, -f for full format</td></tr>
+		<tr><td>free</td><td>free -m, free -g</td><td>Shows ram memories, with -m in MB, with -g in GB</td></tr>
+		<tr><td>top</td><td>top -n1</td><td>Shows processes in interactive table, or snapshot of table via -n1</td></tr>
+		<tr><td>kill PROCESS</td><td>---</td><td>Kill running process</td></tr>
+		<tr><td>yum update</td><td>---</td><td>Update OS</td></tr>
+		<tr><td>yum search PACKAGE, yum install PACKAGE, yum remove PACKAGE</td><td>---</td><td>Search, install or remove package via yum</td></tr>
+		<tr><td>apt search PACKAGE, apt-get install PACKAGE, apt remove PACKAGE</td><td>---</td><td>Search, install or remove package via apt</td></tr>
+		<tr><td>lsblk</td><td>lsblk -f</td><td>Shows hard drives installed, with -f shows also file system</td></tr>
+		<tr><td>mkfs.TYPE /dev/HDD</td><td>mkfs -t TYPE /dev/HDD</td><td>Make filesystem of defined type on defined harddrive</td></tr>
+		<tr><td>mount /dev/HDD /PATH_WHERE_TO_MOUNT</td><td>mount -a</td><td>Temporary mount of HDD, or remount all HDDs with -a</td></tr>
+		<tr><td>df</td><td>df -h</td><td>Show disk sizes, with -h shows in human readable format</td></tr>
+		<tr><td>fdisk /dev/HDD</td><td>---</td><td>Partitioning of defined hard drive</td></tr>
+		<tr><td>umount /PATH_WHERE_MOUNTED</td><td>---</td><td>Unmount HDD from defined folder</td></tr>
+		<tr><td>pvcreate /dev/HDD</td><td>---</td><td>Create tag LVM in physical volume PV HDD for attach it to volume group VG</td></tr>
+		<tr><td>vgcreate VG_NAME /dev/HDD1 /dev/HDD2</td><td>---</td><td>Create volume group VG from specified PV HDDs with LVM tag</td></tr>
+		<tr><td>lvcreate -n LV_HDD_NAME -L#SIZE /dev/VG_NAME</td><td>see command</td><td>Create logical volume LV with name -n, defined size -L from specified volume group</td></tr>
+		<tr><td>mkfs.TYPE /dev/VG_NAME/LV_NAME</td><td>---</td><td>Make filesystem of defined type on logical volume</td></tr>
+		<tr><td>pvs</td><td>---</td><td>Display informations about physical volumes</td></tr>
+		<tr><td>vgs</td><td>---</td><td>Display informations about volume groups</td></tr>
+		<tr><td>lvs</td><td>---</td><td>Display informations about logical volumes</td></tr>
+		<tr><td>lvremove, vgremove, pvremove</td><td>---</td><td>Commands for removing LVs, VGs, PVs</td></tr>
+		<tr><td>ifconfig</td><td>---</td><td>Shows network adapters with IPs</td></tr>
+		<tr><td>iptables -F</td><td>iptables -F</td><td>Flush IP tables</td></tr>
+		<tr><td>systemctl status PACKAGE</td><td>---</td><td>Shows status of defined service</td></tr>
+		<tr><td>systemctl start PACKAGE, systemctl stop PACKAGE</td><td>---</td><td>Manually start or stop defined service</td></tr>
+		<tr><td>systemctl enable PACKAGE, systemctl disable PACKAGE, systemctl is-enabled PACKAGE</td><td>---</td><td>Enable or disable auto-starting of defined service or shows if enabled</td></tr>
+		<tr><td>tar cvzf ARCHIVE.tgz FILE_TO_ARCHIVE FILE2_TO_ARCHIVE</td><td>---</td><td>Compress specified files into archive via tar (can be done by command gzip)</td></tr>
+		<tr><td>tar tvf ARCHIVE.tgz</td><td>---</td><td>Show archive content</td></tr>
+		<tr><td>tar xvf ARCHIVE.tgz</td><td>---</td><td>Uncompress defined archive</td></tr>
+	</table>
+	<table>
+		<tr><th>File path</th><th>Decription</th></tr>
+		<tr><td>/etc/passwd</td><td>User list</td></tr>
+		<tr><td>/etc/group</td><td>Group list</td></tr>
+		<tr><td>/etc/shadow</td><td>Encrypted password list</td></tr>
+		<tr><td>/etc/os-release</td><td>OS informations</td></tr>
+		<tr><td>/etc/fstab</td><td>HDD auto mounting file</td></tr>
+		<tr><td>/usr/bin/fish</td><td>Path to fish terminal after insatlled by: yum install fish</td></tr>
+		<tr><td>/dev/sda-sdb-sdc-sdd</td><td>Hard drives</td></tr>
+		<tr><td>/var/log/messages</td><td>System log</td></tr>
+	</table>
+	<table>
+		<tr><th>Extras</th><th>Decription</th></tr>
+		<tr><td>#!/bin/bash</td><td>First line in bash file, not located in bin folder</td></tr>
+		<tr><td>chmod 770 FILENAME</td><td>7 = RWX, 6 = RW-, 5 = R-X, 4 = R--, 3 = -WX, 2 = -W-, 1 = --X, 0 = ---, or any other combination with a = all users, u = owner, g = group, o = others, + = add, - = remove, r = read, w = write and x = executable, for example a+rwx, u-x, go-wx</td></tr>
+		<tr><td>echo "text replace" &gt; TEXT_FILE</td><td>Write terminal output to new file or replace old file</td></tr>
+		<tr><td>echo "text add" &gt;&gt; TEXT_FILE</td><td>Write terminal output to new file or add to old file</td></tr>
+		<tr><td>Ctrl+D</td><td>Command exit</td></tr>
+		<tr><td>Tab</td><td>Complete command, path or filename</td></tr>
+		<tr><td>UpArrow</td><td>List previous used commands</td></tr>
+		<tr><td>cut -f 1 -d : /etc/passwd</td><td>Shows first row (usernames) of all users in /etc/passwd delimited by :</td></tr>
+		<tr><td>yum install tree -y</td><td>Install tree command via yum and do not ask for user confirmation</td></tr>
+		<tr><td>yum install httpd -y</td><td>Install http server via yum and do not ask for user confirmation</td></tr>
+		<tr><td>yum install fish</td><td>Install fish terminal via yum</td></tr>
+		<tr><td>usermod -s /usr/bin/fish USER_LOGIN</td><td>Add fish terminal to specified user</td></tr>
+		<tr><td>find /START_DIRECTORY -iname "*STRING*"</td><td>Find and file or folder containing STRING in name</td></tr>
+		<tr><td>find / -user USER_LOGIN</td><td>Find every file owned by defined user</td></tr>
+		<tr><td>uptime</td><td>Shows details about system up time</td></tr>
+		<tr><td>ip a s | grep inet</td><td>Shows lines of IP command, where line starts with string inet</td></tr>
+		<tr><td>grep -i error /var/log/messages</td><td>Shows all logs with error messages, not case sensitive</td></tr>
+	</table>
+		<table>
+		<tr><th>Networking</th><th>Decription</th></tr>
+		<tr><td>ip a s</td><td>Display Network Interfaces and IPs</td></tr>
+		<tr><td>ifconfig</td><td>Display Network Interfaces and IPs</td></tr>	
+		<tr><td>route -n</td><td>Display  network routing table</td></tr>
+	</table>
+</body>
+</html>
+
